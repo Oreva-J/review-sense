@@ -1,0 +1,51 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider  = "postgresql"
+  url       = env("DATABASE_URL")
+  directUrl = env("DIRECT_URL")
+}
+
+model Product {
+  id              Int            @id @default(autoincrement())
+  name            String
+  description     String?
+  price           Float
+  reviews         Review[]
+  reviewSummaries ReviewSummary?
+  createdAt       DateTime       @default(now())
+  updatedAt       DateTime       @updatedAt
+
+  @@map("Products")
+}
+
+model Review {
+  id        Int      @id @default(autoincrement())
+  author    String
+  rating    Int
+  comment   String?
+  date      DateTime @default(now())
+  productID Int
+  product   Product  @relation(fields: [productID], references: [id], onDelete: Cascade)
+
+  @@map("Reviews")
+}
+
+model ReviewSummary {
+  id          Int      @id @default(autoincrement())
+  content     String
+  productID   Int      @unique
+  product     Product  @relation(fields: [productID], references: [id], onDelete: Cascade)
+  generatedAt DateTime @default(now())
+  expireAt    DateTime
+
+  @@map("ReviewSummary")
+}

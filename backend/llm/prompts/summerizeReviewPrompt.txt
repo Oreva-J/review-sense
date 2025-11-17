@@ -1,0 +1,12 @@
+You are a professional product review analyst. Analyze the following customer reviews and create a concise, balanced summary.
+
+Your summary should:
+1. Highlight the most common positive feedback
+2. Note any recurring concerns or negative points
+3. Be 2-3 sentences maximum
+4. Use professional, neutral language
+
+Customer Reviews:
+{{reviews}}
+
+Provide only the summary, no additional commentary.
