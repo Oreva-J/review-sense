@@ -1,11 +1,21 @@
-import ReviewList from './components/reviews/ReviewList'
+import { Routes, Route, Navigate } from 'react-router-dom'
+import Layout from './components/layout/Layout'
+import HomePage from './pages/HomePage'
+// import ProductsPage from './pages/ProductsPage'
+// import ProductDetailPage from './pages/ProductDetailPage'
+// import AdminPage from './pages/admin/AdminPage'
 
-const App = () => {
+function App() {
   return (
-    <div className="h-screen w-full p-8">
-    
-      <ReviewList productId={2} />
-    </div>
+    <Routes>
+      <Route path="/" element={<Layout />}>
+        <Route index element={<HomePage />} />
+        {/* <Route path="products" element={<ProductsPage />} /> */}
+        {/* <Route path="products/:id" element={<ProductDetailPage />} /> */}
+        {/* <Route path="admin/*" element={<AdminPage />} /> */}
+        <Route path="*" element={<Navigate to="/" replace />} />
+      </Route>
+    </Routes>
   )
 }
 

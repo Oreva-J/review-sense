@@ -1,9 +1,28 @@
 import type { Request, Response } from "express";
-import { dataReview, getProduct, getSummary } from "../db/database";
+import { dataReview, getAllProducts, getProduct, getSummary } from "../db/database";
 import { summeriseService } from "../services/summerizerService";
 
 const controller = (req: Request, res: Response) => {
-    res.json({ message: "Summerizer API is running" });
+    res.json({ 
+      status: 'ok',
+      message: "ReviewSense API is running",
+      endpoints: {
+        products: '/api/products',
+        productReviews: '/api/products/:id/reviews',
+        summarize: '/api/products/:id/summarize'
+      }
+    });
+}
+
+// Get all products
+const getProducts = async (req: Request, res: Response) => {
+    try {
+        const products = await getAllProducts();
+        return res.json(products);
+    } catch (error) {
+        console.error("Error fetching products:", error);
+        return res.status(500).json({ error: "Failed to fetch products" });
+    }
 }
 
 const summerizeReviews = async (req: Request, res: Response) => {
@@ -67,5 +86,6 @@ const getProductReviews = async (req: Request, res: Response) => {
 export const controllers = {
     controller,
     getProductReviews,
+    getProducts,
     summerizeReviews
 }

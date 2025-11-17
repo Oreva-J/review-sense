@@ -42,6 +42,24 @@ export const getProduct = async (productId: number): Promise<Product | null> => 
     }
 }
 
+export const getAllProducts = async (): Promise<Product[]> => {
+    try {
+        return await prisma.product.findMany({
+            orderBy: { createdAt: 'desc' },
+            include: {
+                reviews: {
+                    select: {
+                        rating: true
+                    }
+                }
+            }
+        });
+    } catch (error) {
+        console.error('Error fetching all products:', error);
+        throw error;
+    }
+}
+
 export const dataReview = async (productId: number, limit?: number): Promise<Review[]> => {
     try {
         return await prisma.review.findMany({
