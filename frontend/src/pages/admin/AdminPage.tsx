@@ -1,16 +1,19 @@
-import { Routes, Route, Link } from 'react-router-dom'
+import { Routes, Route, Navigate } from 'react-router-dom'
+import AdminDashboard from './AdminDashboard'
+import ProductsManagement from './ProductsManagement'
+import CreateProduct from './CreateProduct'
+import EditProduct from './EditProduct'
+import AddReview from './AddReview'
 
 export default function AdminPage() {
   return (
-    <div className="space-y-6">
-      <h1 className="text-3xl font-bold text-gray-900">Admin Dashboard</h1>
-      <p className="text-gray-600">Coming soon...</p>
-      
-      <div className="bg-blue-50 border border-blue-200 rounded-lg p-4">
-        <p className="text-blue-800">
-          Admin features will be added in Week 3
-        </p>
-      </div>
-    </div>
+    <Routes>
+      <Route index element={<AdminDashboard />} />
+      <Route path="products" element={<ProductsManagement />} />
+      <Route path="products/new" element={<CreateProduct />} />
+      <Route path="products/:id/edit" element={<EditProduct />} />
+      <Route path="products/:id/add-review" element={<AddReview />} />
+      <Route path="*" element={<Navigate to="/admin" replace />} />
+    </Routes>
   )
 }

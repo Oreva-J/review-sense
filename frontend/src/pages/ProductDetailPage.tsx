@@ -15,7 +15,6 @@ import ReviewCard from "../components/reviews/ReviewCard";
 import AISummary from "../components/reviews/AISummary";
 import StarRating from "../components/reviews/StarRating";
 
-
 export default function ProductDetailPage() {
   const { id } = useParams<{ id: string }>();
   const productId = Number(id);
@@ -102,12 +101,20 @@ export default function ProductDetailPage() {
           </Button>
         </Link>
 
-        <Link to={`/analytics/${productId}`}>
-          <Button className="gap-2">
-            <BarChart3 className="h-4 w-4" />
-            View Analytics
-          </Button>
-        </Link>
+        <div className="flex space-x-3">
+          <Link to={`/admin/products/${productId}/add-review`}>
+            <Button variant="outline" className="gap-2">
+              <MessageSquare className="h-4 w-4" />
+              Add Review
+            </Button>
+          </Link>
+          <Link to={`/analytics/${productId}`}>
+            <Button className="gap-2">
+              <BarChart3 className="h-4 w-4" />
+              View Analytics
+            </Button>
+          </Link>
+        </div>
       </div>
 
       {/* Product Header */}

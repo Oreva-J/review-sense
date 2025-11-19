@@ -1,6 +1,6 @@
 import { PrismaClient, type Review, type Product, } from '@prisma/client'
 import dayjs from "dayjs";
-// import { PrismaClient } from "../generated/prisma/client";
+
 
 export const prisma = new PrismaClient({
     log: process.env.NODE_ENV === 'development' ? ['query', 'error', 'warn'] : ['error'],

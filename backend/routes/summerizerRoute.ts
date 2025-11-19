@@ -3,18 +3,32 @@ import { controllers } from "../controllers/summerizerController";
 
 const router = Router();
 
-const { controller, getProductReviews, summerizeReviews, getProducts } = controllers;
+const { 
+    controller, 
+    getProducts, 
+    getProductReviews, 
+    summerizeReviews,
+    createProduct,
+    updateProduct,
+    deleteProduct,
+    createReview
+} = controllers;
 
 // Health check
-router.get('/api/health', controller); // ✅ Changed from /ask
+router.get('/api/health', controller);
+router.get('/', controller);
 
-// Summarize reviews (fixed spelling)
-router.post("/api/products/:id/summarize", summerizeReviews); // ✅ summarize not summerise
-
-// Get product reviews
-router.get("/api/products/:id/reviews", getProductReviews); // ✅ plural /products, /reviews
-
-// Get all products
+// Products
 router.get("/api/products", getProducts);
+router.post("/api/products", createProduct);
+router.put("/api/products/:id", updateProduct);
+router.delete("/api/products/:id", deleteProduct);
+
+// Reviews
+router.get("/api/products/:id/reviews", getProductReviews);
+router.post("/api/products/:id/reviews", createReview);
+
+// Summarize
+router.post("/api/products/:id/summarize", summerizeReviews);
 
 export default router;

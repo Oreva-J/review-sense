@@ -36,6 +36,24 @@ export type GetSummaryResponse = {
     summary: string
 }
 
+export type CreateProductInput = {
+    name: string
+    description?: string
+    price: number
+}
+
+export type UpdateProductInput = {
+    name?: string
+    description?: string
+    price?: number
+}
+
+export type CreateReviewInput = {
+    author: string
+    rating: number
+    comment?: string
+}
+
 export const api = {
     // Get all products
     async getProducts() {
@@ -52,6 +70,30 @@ export const api = {
     // Generate summary
     async generateSummary(productId: number) {
         const { data } = await axios.post<GetSummaryResponse>(`${API_URL}/api/products/${productId}/summarize`);
+        return data;
+    },
+
+    // Create product
+    async createProduct(input: CreateProductInput) {
+        const { data } = await axios.post<Product>(`${API_URL}/api/products`, input);
+        return data;
+    },
+
+    // Update product
+    async updateProduct(productId: number, input: UpdateProductInput) {
+        const { data } = await axios.put<Product>(`${API_URL}/api/products/${productId}`, input);
+        return data;
+    },
+
+    // Delete product
+    async deleteProduct(productId: number) {
+        const { data } = await axios.delete(`${API_URL}/api/products/${productId}`);
+        return data;
+    },
+
+    // Create review
+    async createReview(productId: number, input: CreateReviewInput) {
+        const { data } = await axios.post<Review>(`${API_URL}/api/products/${productId}/reviews`, input);
         return data;
     }
 }

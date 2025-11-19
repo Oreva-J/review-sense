@@ -1,5 +1,6 @@
 import { Link, Outlet } from 'react-router-dom'
 import { BarChart3, Home, Settings } from 'lucide-react'
+import { Toaster } from 'sonner'
 
 export default function Layout() {
   return (
@@ -46,6 +47,8 @@ export default function Layout() {
           </p>
         </div>
       </footer>
+      {/* Toast Notifications */}
+      <Toaster position="top-right" richColors />
     </div>
   )
 }
