@@ -118,32 +118,37 @@ export default function ProductDetailPage() {
       </div>
 
       {/* Product Header */}
-      <div className="bg-white rounded-lg shadow-sm border p-8">
-        <div className="grid md:grid-cols-2 gap-8">
+      {/* Product Header */}
+      <div className="bg-white rounded-lg shadow-sm border p-6 md:p-8">
+        <div className="grid md:grid-cols-2 gap-6 md:gap-8">
           {/* Product Image Placeholder */}
-          <div className="bg-gradient-to-br from-blue-500 to-purple-600 rounded-lg h-96 flex items-center justify-center">
-            <span className="text-9xl text-white opacity-50">📦</span>
+          <div className="bg-gradient-to-br from-blue-500 to-purple-600 rounded-lg h-64 md:h-96 flex items-center justify-center">
+            <span className="text-6xl md:text-9xl text-white opacity-50">
+              📦
+            </span>
           </div>
 
           {/* Product Info */}
-          <div className="space-y-6">
+          <div className="space-y-4 md:space-y-6">
             <div>
-              <h1 className="text-4xl font-bold text-gray-900 mb-2">
+              <h1 className="text-3xl md:text-4xl font-bold text-gray-900 mb-2">
                 {productName}
               </h1>
-              <p className="text-gray-600 text-lg">{productDescription}</p>
+              <p className="text-gray-600 text-base md:text-lg">
+                {productDescription}
+              </p>
             </div>
 
             <div className="flex items-center space-x-4">
               <StarRating value={Math.round(avgRating)} showNumber />
-              <span className="text-gray-600">
+              <span className="text-gray-600 text-sm md:text-base">
                 ({reviews?.length || 0}{" "}
                 {reviews?.length === 1 ? "review" : "reviews"})
               </span>
             </div>
 
             <div className="pt-4 border-t">
-              <p className="text-4xl font-bold text-gray-900">
+              <p className="text-3xl md:text-4xl font-bold text-gray-900">
                 ${productPrice.toFixed(2)}
               </p>
             </div>
