@@ -1,7 +1,7 @@
 import { useParams, Link } from 'react-router-dom'
 import { useQuery } from '@tanstack/react-query'
 import { api } from '../config/api'
-import { ArrowLeft, Loader2, BarChart3, PieChart, TrendingUp, Activity } from 'lucide-react'
+import { ArrowLeft, Loader2, BarChart3, PieChart, Activity } from 'lucide-react'
 import { Button } from '../components/ui/button'
 import ReviewTimelineChart from '../components/analytics/ReviewTimelineChart'
 import RatingDistributionChart from '../components/analytics/RatingDistributionChart'

@@ -2,7 +2,6 @@ import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { z } from 'zod'
 import { Button } from '../ui/button'
-import StarRating from '../reviews/StarRating'
 import { useState } from 'react'
 
 const reviewSchema = z.object({
