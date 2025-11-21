@@ -14,8 +14,11 @@ import StatsCard from "../components/products/StatsCard";
 import ReviewCard from "../components/reviews/ReviewCard";
 import AISummary from "../components/reviews/AISummary";
 import StarRating from "../components/reviews/StarRating";
+import { useState } from 'react';
+
 
 export default function ProductDetailPage() {
+  const [imageError, setImageError] = useState(false);
   const { id } = useParams<{ id: string }>();
   const productId = Number(id);
   const queryClient = useQueryClient();
@@ -121,37 +124,24 @@ export default function ProductDetailPage() {
         </div>
       </div>
 
-      {/* Product Header */}
+      
       {/* Product Header */}
       <div className="bg-white rounded-lg shadow-sm border p-6 md:p-8">
         <div className="grid md:grid-cols-2 gap-6 md:gap-8">
-          {/* Product Image Placeholder
-          <div className="bg-gradient-to-br from-blue-500 to-purple-600 rounded-lg h-64 md:h-96 flex items-center justify-center">
-            <span className="text-6xl md:text-9xl text-white opacity-50">
-              📦
-            </span>
-          </div> */}
+          
 
           {/* Product Image */}
           <div className="relative rounded-lg overflow-hidden bg-gray-100">
-            {product.imageUrl ? (
-              <img
-                src={product.imageUrl}
+            {product.imageUrl && !imageError ? (
+              <img 
+                src={product.imageUrl} 
                 alt={product.name}
                 className="w-full h-64 md:h-96 object-cover"
-                onError={(e) => {
-        
-                 // Prevent infinite loop by removing the onError handler after first failure
-        e.currentTarget.onerror = null
-        // Use a data URL as fallback (always works, no network request)
-        e.currentTarget.src = 'data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" width="800" height="600"%3E%3Crect width="800" height="600" fill="%23f3f4f6"/%3E%3Ctext x="50%25" y="50%25" dominant-baseline="middle" text-anchor="middle" font-family="sans-serif" font-size="24" fill="%239ca3af"%3EImage Not Available%3C/text%3E%3C/svg%3E'
-                }}
+                onError={() => setImageError(true)} // ✅ Just set state, no src manipulation
               />
             ) : (
               <div className="bg-gradient-to-br from-blue-500 to-purple-600 h-64 md:h-96 flex items-center justify-center">
-                <span className="text-6xl md:text-9xl text-white opacity-50">
-                  📦
-                </span>
+                <span className="text-6xl md:text-9xl text-white opacity-50">📦</span>
               </div>
             )}
           </div>
