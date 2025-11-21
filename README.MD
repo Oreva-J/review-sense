@@ -12,7 +12,7 @@ ReviewSense is a full-stack web application that transforms customer reviews int
 
 ##  Features
 
-### 🤖 AI-Powered Summarization
+###  AI-Powered Summarization
 - Automatically generate concise summaries of customer reviews
 - Powered by Claude AI for intelligent analysis
 - One-click summary generation with caching
@@ -23,7 +23,7 @@ ReviewSense is a full-stack web application that transforms customer reviews int
 - **Rating Distribution:** Understand rating patterns with interactive charts
 - **Trend Analysis:** Monitor rating improvements or declines
 
-### 🛠️ Complete Admin Panel
+###  Complete Admin Panel
 - **Product Management:** Create, read, update, and delete products
 - **Review Management:** Add and manage customer reviews
 - **Form Validation:** Client-side validation with Zod
@@ -170,7 +170,7 @@ reviewsense/
 
 ---
 
-## 🎯 Future Enhancements
+##  Future Enhancements
 
 - [ ] User authentication and authorization
 - [ ] Review moderation system
@@ -183,7 +183,7 @@ reviewsense/
 
 ---
 
-## 📊 Performance
+##  Performance
 
 - **Lighthouse Score:** 95+
 - **First Contentful Paint:** < 1.5s
@@ -198,22 +198,22 @@ Contributions are welcome! Please feel free to submit a Pull Request.
 
 ---
 
-## 📄 License
+##  License
 
 This project is licensed under the MIT License.
 
 ---
 
-## 👨‍💻 Author: Ekokodhe John Awusi OREVA
+##  Author: Ekokodhe John Awusi OREVA
 
 
-- Portfolio: [yourportfolio.com](https://yourportfolio.com)
-- LinkedIn: [linkedin.com/in/yourname](https://linkedin.com/in/yourname)
-- GitHub: [@yourusername](https://github.com/yourusername)
+- Portfolio: (https://yourportfolio.com)
+- LinkedIn: [linkedin.com/in/john-ekokodhe](https://www.linkedin.com/in/john-ekokodhe?lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_view_base_contact_details%3ByQ%2F5%2F7BXSOSzgaB3CnYnVQ%3D%3D)
+- GitHub: (https://github.com/yourusername)
 
 ---
 
-## 🙏 Acknowledgments
+##  Acknowledgments
 
 - AI summarization powered by Anthropic Claude
 - UI components from Shadcn/UI
