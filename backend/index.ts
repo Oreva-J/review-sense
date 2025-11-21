@@ -25,38 +25,35 @@ app.use(
       if (!origin) return callback(null, true);
 
       // In development, allow all localhost
-      if (process.env.NODE_ENV === 'development') {
-        if (origin.includes('localhost') || origin.includes('127.0.0.1')) {
+      if (process.env.NODE_ENV === "development") {
+        if (origin.includes("localhost") || origin.includes("127.0.0.1")) {
           return callback(null, true);
         }
       }
-      
+
       // Check if origin is in allowed list or matches Vercel pattern
-      if (
-        allowedOrigins.includes(origin) ||
-        origin.includes('.vercel.app')
-      ) {
+      if (allowedOrigins.includes(origin) || origin.includes(".vercel.app")) {
         callback(null, true);
       } else {
-        callback(new Error('Not allowed by CORS'));
+        callback(new Error("Not allowed by CORS"));
       }
     },
     credentials: true,
   })
 );
 
-app.use(router)
-app.use(errorHandler)
+app.use(router);
+app.use(errorHandler);
 
-app.get('/', (req, res) => {
-  res.json({ 
-    status: 'ok', 
-    message: 'Summerizer API is running',
+app.get("/", (req, res) => {
+  res.json({
+    status: "ok",
+    message: "Summerizer API is running",
     endpoints: {
-      health: '/api/health',
-      products: '/api/products/:id/reviews',
-      summarize: '/api/products/:id/summarize'
-    }
+      health: "/api/health",
+      products: "/api/products/:id/reviews",
+      summarize: "/api/products/:id/summarize",
+    },
   });
 });
 
