@@ -6,20 +6,21 @@ import { Button } from '../ui/button'
 const productSchema = z.object({
   name: z.string().min(1, 'Name is required').max(255, 'Name too long'),
   description: z.string().optional(),
-  price: z.number().min(0.01, 'Price must be greater than 0')
+  price: z.number().min(0.01, 'Price must be greater than 0'),
+  imageUrl: z.string().url('Must be a valid URL').optional().or(z.literal(''))
 })
 
 type ProductFormData = z.infer<typeof productSchema>
 
-// Change this type
 type ProductData = {
   name: string
   description: string | null
   price: number
+  imageUrl?: string | null
 }
 
 type Props = {
-  product?: ProductData  // Changed from Product to ProductData
+  product?: ProductData
   onSubmit: (data: ProductFormData) => void
   onCancel: () => void
   isSubmitting?: boolean
@@ -31,7 +32,8 @@ export default function ProductForm({ product, onSubmit, onCancel, isSubmitting 
     defaultValues: product ? {
       name: product.name,
       description: product.description || '',
-      price: product.price
+      price: product.price,
+      imageUrl: product.imageUrl || ''
     } : undefined
   })
 
@@ -84,6 +86,25 @@ export default function ProductForm({ product, onSubmit, onCancel, isSubmitting 
         {errors.price && (
           <p className="text-red-600 text-sm mt-1">{errors.price.message}</p>
         )}
+      </div>
+
+      {/* Image URL */}
+      <div>
+        <label className="block text-sm font-medium text-gray-700 mb-2">
+          Image URL
+        </label>
+        <input
+          {...register('imageUrl')}
+          type="url"
+          className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+          placeholder="https://example.com/image.jpg"
+        />
+        {errors.imageUrl && (
+          <p className="text-red-600 text-sm mt-1">{errors.imageUrl.message}</p>
+        )}
+        <p className="text-xs text-gray-500 mt-1">
+          Tip: Use Unsplash for free images - https://unsplash.com
+        </p>
       </div>
 
       {/* Actions */}

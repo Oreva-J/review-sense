@@ -72,7 +72,9 @@ const getProductReviews = async (req: Request, res: Response) => {
             product: {
                 id: product.id,
                 name: product.name,
-                description: product.description
+                description: product.description,
+                price: product.price,
+                imageUrl: product.imageUrl  // ✅ This must be included
             },
             reviews, 
             summary 
