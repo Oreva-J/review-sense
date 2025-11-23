@@ -4,12 +4,12 @@ import ProductsPage from "./pages/ProductsPage";
 import ProductDetailPage from "./pages/ProductDetailPage";
 import AnalyticsPage from "./pages/AnalyticsPage";
 import AdminPage from "./pages/admin/AdminPage";
-import Layoutt from "./components/layout/Layoutt";
+import Layout from "./components/layout/Layout";
 
 function App() {
   return (
     <Routes>
-      <Route path="/" element={<Layoutt />}>
+      <Route path="/" element={<Layout />}>
         <Route index element={<HomePage />} />
         <Route path="products" element={<ProductsPage />} />
         <Route path="products/:id" element={<ProductDetailPage />} />

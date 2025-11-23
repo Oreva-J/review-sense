@@ -3,7 +3,7 @@ import { BarChart3, Home, Settings } from 'lucide-react'
 import { Link, Outlet } from 'react-router-dom'
 import { Toaster } from 'sonner'
 
-const Layoutt = () => {
+const Layout = () => {
   return (
     <div className="min-h-screen bg-gray-50">
           {/* Header */}
@@ -54,4 +54,4 @@ const Layoutt = () => {
   )
 }
 
-export default Layoutt
+export default Layout
